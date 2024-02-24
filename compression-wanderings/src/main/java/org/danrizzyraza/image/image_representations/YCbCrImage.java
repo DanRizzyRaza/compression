@@ -1,5 +1,7 @@
 package org.danrizzyraza.image.image_representations;
 
+import static org.danrizzyraza.image.ChannelTransformations.generalSwapChannels;
+import static org.danrizzyraza.image.ChannelTransformations.generalChannelMultiplier;
 import static org.danrizzyraza.image.ChannelTransformations.generalDownSample;
 import static org.danrizzyraza.image.ColourSpaceTransformer.YCbCrtoRGB;
 
@@ -29,6 +31,15 @@ public class YCbCrImage implements ImageRepresentation {
     @Override
     public void applyDownSample(int channel, int scale) {
         generalDownSample(this, channel, scale);
+    }
+    @Override
+    public void applyChannelMultiplier(int channel, int multiplier) {
+        generalChannelMultiplier(this, channel, multiplier);
+    }
+
+    @Override
+    public void swapChannels(int channel1, int channel2) {
+        generalSwapChannels(this, channel1, channel2);
     }
 
     public RGBImage convertToRGBImage() {

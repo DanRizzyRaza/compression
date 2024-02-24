@@ -5,4 +5,6 @@ public interface ImageRepresentation {
     public int getWidth();
     public int getHeight();
     public void applyDownSample(int channel, int scale);
+    public void applyChannelMultiplier(int channel, int multipler);
+    public void swapChannels(int channel1, int channel2);
 }
