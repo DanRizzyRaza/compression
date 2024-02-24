@@ -10,14 +10,16 @@ import java.util.Arrays;
 import static org.danrizzyraza.image.ColourSpaceTransformer.RGBtoYCbCr;
 import static org.danrizzyraza.image.ColourSpaceTransformer.YCbCrtoRGB;
 import static org.danrizzyraza.image.GenerateImage.saveBufferedImage;
+import static org.danrizzyraza.image.GenerateImage.saveImageFromRGBRepresentation;
 import static org.danrizzyraza.image.GetPixels.getRGBPixelsFromImage;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 //        short[][][] testArray = new short[5][4][3];
-        short[][][] testArray = { {{1,1,1}, {3,3,3}, {1,1,1}, {5,5,5} }, { {1,1,1}, {3,3,3}, {1,1,1}, {5,5,5} }, { {3,3,3}, {5,5,5}, {1,1,1}, {3,3,3} }, { {3,3,3}, {5,5,5}, {1,1,1}, {3,3,3} }, { {1,1,1}, {1,1,1}, {5,5,5}, {5,5,5} } };
+        short[][][] testArray = { {{255,0,0}, {128,0,0}, {255,0,0}, {255,255,0} }, { {255,0,0}, {128,0,0}, {255,0,0}, {255,255,0} }, { {128,0,0}, {255,255,0}, {255,0,0}, {128,0,0} }, { {128,0,0}, {255,255,0}, {255,0,0}, {128,0,0} }, { {255,0,0}, {255,0,0}, {255,255,0}, {255,255,0} } };
         RGBImage testRGB = new RGBImage(testArray);
         testRGB.applyDownSample(0, 3);
+        saveImageFromRGBRepresentation(testRGB, "imageR3xDSampling");
     }
 
     static void getPixel() throws IOException {

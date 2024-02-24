@@ -16,8 +16,14 @@ public class RGBImage implements ImageRepresentation {
     public short[][][] getPixelArray() {
         return pixelArray;
     }
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
+    }
 
-//    private void print() {
+    //    private void print() {
 //        StringBuilder str = new StringBuilder();
 //        for (short[][] columns: pixelArray) {
 //            for (short[] row: columns) {
