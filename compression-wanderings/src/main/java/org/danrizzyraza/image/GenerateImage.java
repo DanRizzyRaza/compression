@@ -11,7 +11,7 @@ import static org.danrizzyraza.image.util.BufferedImageUtil.RGBtoARGB;
 
 public class GenerateImage {
     public static void saveBufferedImage(BufferedImage bufferedImage, String name) throws IOException {
-        File outputFile = new File(String.format("/Users/danyal.raza45/code/compression/compression-wanderings/Output/Images/%s", name));
+        File outputFile = new File(String.format("/Users/danyal.raza45/code/compression/Output/%s", name));
         ImageIO.write(bufferedImage, "png", outputFile);
     }
 

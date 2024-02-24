@@ -12,9 +12,9 @@ import javax.imageio.ImageIO;
 public class GetPixels {
     public static void getRGBPixelsFromImage(String inputName, String saveName) throws IOException {
         // This function scans across rows
-        FileWriter writer = new FileWriter(String.format("/Users/danyal.raza45/code/compression/compression-wanderings/Output/Images/%s.txt", saveName));
+        FileWriter writer = new FileWriter(String.format("/Users/danyal.raza45/code/compression/Output/%s.txt", saveName));
         //Reading the image
-        File file= new File(String.format("/Users/danyal.raza45/code/compression/compression-wanderings/Input/Images/%s", inputName));
+        File file= new File(String.format("/Users/danyal.raza45/code/compression/Input/Images/%s", inputName));
         BufferedImage img = ImageIO.read(file);
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
@@ -38,7 +38,7 @@ public class GetPixels {
     }
 
     public static RGBImage getRGBRepresentationFromImage(String inputName) throws IOException {
-        File file= new File(String.format("/Users/danyal.raza45/code/compression/compression-wanderings/Input/Images/%s", inputName));
+        File file= new File(String.format("/Users/danyal.raza45/code/compression/Input/%s", inputName));
         BufferedImage img = ImageIO.read(file);
 
         int width = img.getWidth();
