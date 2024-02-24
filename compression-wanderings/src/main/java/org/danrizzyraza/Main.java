@@ -1,8 +1,8 @@
 package org.danrizzyraza;
 
 import org.danrizzyraza.image.image_representations.RGBImage;
+import org.danrizzyraza.image.image_representations.YCbCrImage;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,16 +12,34 @@ import static org.danrizzyraza.image.ColourSpaceTransformer.YCbCrtoRGB;
 import static org.danrizzyraza.image.GenerateImage.saveBufferedImage;
 import static org.danrizzyraza.image.GenerateImage.saveImageFromRGBRepresentation;
 import static org.danrizzyraza.image.GetPixels.getRGBPixelsFromImage;
+import static org.danrizzyraza.image.GetPixels.getRGBRepresentationFromImage;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        short[][][] testArray = new short[5][4][3];
+        bananaTest();
+    }
+
+    static void bananaYCbCrTest() throws IOException {
+        RGBImage bananaRGBImage = getRGBRepresentationFromImage("flying-banana.png");
+        YCbCrImage bananaYCbCr = bananaRGBImage.convertToYCbCrImage();
+//        bananaYCbCr.applyDownSample(2, 10);
+        RGBImage bananaRGBImageBackTo = bananaYCbCr.convertToRGBImage();
+        saveImageFromRGBRepresentation(bananaRGBImageBackTo, "banana-toYCbCr-backToRGB-before");
+    }
+    static void bananaTest() throws IOException {
+        RGBImage bananaRGBImage = getRGBRepresentationFromImage("flying-banana.png");
+        bananaRGBImage.applyDownSample(0, 10);
+//        bananaRGBImage.applyDownSample(1, 10);
+        bananaRGBImage.applyDownSample(2, 10);
+        saveImageFromRGBRepresentation(bananaRGBImage, "banana-dSampled-RB-10x");
+    }
+
+    static void test1() throws IOException {
         short[][][] testArray = { {{255,0,0}, {128,0,0}, {255,0,0}, {255,255,0} }, { {255,0,0}, {128,0,0}, {255,0,0}, {255,255,0} }, { {128,0,0}, {255,255,0}, {255,0,0}, {128,0,0} }, { {128,0,0}, {255,255,0}, {255,0,0}, {128,0,0} }, { {255,0,0}, {255,0,0}, {255,255,0}, {255,255,0} } };
         RGBImage testRGB = new RGBImage(testArray);
         testRGB.applyDownSample(0, 3);
         saveImageFromRGBRepresentation(testRGB, "imageR3xDSampling");
     }
-
     static void getPixel() throws IOException {
         getRGBPixelsFromImage("test.png", "testRGB");
     }

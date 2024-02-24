@@ -1,5 +1,7 @@
 package org.danrizzyraza.image;
 
+import org.danrizzyraza.image.image_representations.RGBImage;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.awt.Color;
@@ -33,5 +35,29 @@ public class GetPixels {
         }
         writer.close();
         System.out.println("RGB values at each pixel are stored in the specified file");
+    }
+
+    public static RGBImage getRGBRepresentationFromImage(String inputName) throws IOException {
+        File file= new File(String.format("/Users/danyal.raza45/code/compression/compression-wanderings/Input/Images/%s", inputName));
+        BufferedImage img = ImageIO.read(file);
+
+        int width = img.getWidth();
+        int height = img.getHeight();
+
+        short[][][] pixelArray = new short[width][height][3];
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                //Retrieving contents of a pixel
+                int pixel = img.getRGB(x,y);
+                //Creating a Color object from pixel value
+                Color color = new Color(pixel, true);
+                //Retrieving the R G B values
+                pixelArray[x][y][0] = (short) color.getRed();
+                pixelArray[x][y][1] = (short) color.getGreen();
+                pixelArray[x][y][2] = (short) color.getBlue();
+            }
+        }
+    return new RGBImage(pixelArray);
     }
 }
