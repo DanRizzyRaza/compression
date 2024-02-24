@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class GetPixels {
-    public static void getRGBPixels(String inputName, String saveName) throws IOException {
+    public static void getRGBPixelsFromImage(String inputName, String saveName) throws IOException {
         // This function scans across rows
         FileWriter writer = new FileWriter(String.format("/Users/danyal.raza45/code/compression/compression-wanderings/Output/Images/%s.txt", saveName));
         //Reading the image
